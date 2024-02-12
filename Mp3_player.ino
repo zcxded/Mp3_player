@@ -76,16 +76,15 @@ void loop() {
   BUSYT = digitalRead(BUSY);
 
 
-
-
-
+        
   if (BUSYT == HIGH && isPlaying == true) {
     myDFPlayer.next(); //Next Song
     isPlaying = false; // пауза
-    Serial.println("Next Song..");
+    Serial.println("Auto Next Song..");
   }
 
-  
+
+        
   if (enc1.isRight()) {
     if (BUSYT == LOW) {
       myDFPlayer.next(); //Next Song
@@ -132,13 +131,9 @@ void loop() {
       isPlaying = true; // воспроизводим==
       oled.drawBitmap(0, 0, bitmap_128x64, 128, 64);
       myDFPlayer.start(); //запускаем mp3 с паузы
+      Serial.println("Play..");
     }
     delay(500);
   };         
-
-  if (enc1.isHolded()) {
-    Serial.println("Holded");
-  };
- 
 }
   
